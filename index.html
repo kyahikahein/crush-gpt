@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crush-GPT - Never Replies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <button class="new-chat-btn">
+                <span>+</span>
+                New Chat
+            </button>
+            
+            <div class="chat-history">
+                <div class="chat-item active">💔 Current Chat</div>
+                <div class="chat-item" data-conversation="previous">💬 Previous Attempts</div>
+                <div class="chat-item" data-conversation="ignored">😢 More Ignored Messages</div>
+                <div class="chat-item" data-conversation="silence">🙄 Still No Response</div>
+                <div class="chat-item" data-conversation="hopeless">😭 Day 47 of Silence</div>
+            </div>
+            
+            <div class="sidebar-bottom">
+                <div class="user-info">
+                    <img src="https://pbs.twimg.com/profile_images/1956422441569312770/OJe7wx2f_400x400.jpg" 
+                         alt="Your Profile" 
+                         class="avatar user-avatar profile-img"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="avatar user-avatar fallback-avatar" style="display: none;">U</div>
+                    <div>
+                        <div class="username">You</div>
+                        <div class="user-status">Forever hopeful</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="chat-header">
+                <div class="header-title">
+                    <div class="avatar assistant-avatar">C</div>
+                    <span>Crush-GPT</span>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    <span>Online (but ignoring you)</span>
+                </div>
+            </div>
+
+            <div class="messages-container" id="messagesContainer">
+                <div class="welcome-screen">
+                    <div class="welcome-header">
+                        <div class="welcome-title">Crush-GPT</div>
+                        <div class="welcome-subtitle">Experience the authentic frustration of modern digital relationships</div>
+                    </div>
+                    
+                    <div class="welcome-examples">
+                        <div class="example-section">
+                            <div class="example-title">Examples</div>
+                            <div class="example-item">
+                                <div class="example-icon">💬</div>
+                                <div class="example-text">"Hey! How's your day going?"</div>
+                            </div>
+                            <div class="example-item">
+                                <div class="example-icon">😊</div>
+                                <div class="example-text">"Did you see that funny meme I sent?"</div>
+                            </div>
+                            <div class="example-item">
+                                <div class="example-icon">❤️</div>
+                                <div class="example-text">"Thinking of you today"</div>
+                            </div>
+                        </div>
+                        
+                        <div class="example-section">
+                            <div class="example-title">Capabilities</div>
+                            <div class="example-item">
+                                <div class="example-icon">📱</div>
+                                <div class="example-text">Reads your messages instantly</div>
+                            </div>
+                            <div class="example-item">
+                                <div class="example-icon">🚫</div>
+                                <div class="example-text">Never replies (just like your crush)</div>
+                            </div>
+                            <div class="example-item">
+                                <div class="example-icon">😅</div>
+                                <div class="example-text">Provides authentic ghosting experience</div>
+                            </div>
+                        </div>
+                        
+                        <div class="example-section">
+                            <div class="example-title">Limitations</div>
+                            <div class="example-item">
+                                <div class="example-icon">💔</div>
+                                <div class="example-text">Cannot provide emotional support</div>
+                            </div>
+                            <div class="example-item">
+                                <div class="example-icon">🤡</div>
+                                <div class="example-text">Will make you question your self-worth</div>
+                            </div>
+                            <div class="example-item">
+                                <div class="example-icon">😭</div>
+                                <div class="example-text">May cause excessive hope and disappointment</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="avatar assistant-avatar">C</div>
+                <div>
+                    <span class="typing-text">Crush-GPT is typing</span>
+                    <div class="typing-dots">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <textarea 
+                        class="message-input" 
+                        id="messageInput" 
+                        placeholder="Message Crush-GPT... (who will never reply)"
+                        rows="1"
+                    ></textarea>
+                    <button class="send-button" id="sendButton" disabled>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-panel">
+        <div class="stats-title">📊 Reality Check</div>
+        <div class="stat-row">
+            <span>Messages Sent:</span>
+            <span class="stat-value" id="messagesSent">0</span>
+        </div>
+        <div class="stat-row">
+            <span>Messages Read:</span>
+            <span class="stat-value" id="messagesRead">0</span>
+        </div>
+        <div class="stat-row">
+            <span>Replies Received:</span>
+            <span class="stat-value replies-count" id="repliesReceived">0</span>
+        </div>
+        <div class="stat-row">
+            <span>Hope Level:</span>
+            <span class="stat-value replies-count">Declining</span>
+        </div>
+        <div class="stat-row">
+            <span>Self-Respect:</span>
+            <span class="stat-value replies-count">Critical</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
