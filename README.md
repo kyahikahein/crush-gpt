@@ -1,7 +1,13 @@
 # <img src="logo.png" alt="logo" width="30"> Crush-GPT ❤️
 
-Crush-GPT is a fun little web project that lets you chat with an AI pretending to be your crush.  
-When someone first visits the site, they’re asked to enter their crush’s name — and then all replies feel personalized and more realistic.
+Crush-GPT is a parody project that pretends to be a chatbot, but with one twist — it never replies.  
+When you open the site, it first asks you: *“What’s their name?”* so you can set the stage for your imagination.  
+After that, you can type as much as you want, pour your feelings out, or just rant endlessly… and Crush-GPT will sit there quietly, staring back at you.  
+
+The joke? That’s exactly how having a crush often feels in real life — you talk, you imagine a conversation, but they never actually respond.  
+It’s not a bug, it’s the main feature.  
+
+Think of it as the most realistic simulation of unrequited love, wrapped in the skin of an AI chatbot. 
 
 ## ✨ Features
 - 🔤 Enter your crush's name when you first open the site  
