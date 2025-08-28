@@ -24,7 +24,6 @@ root/
 │── style.css         # styles (themes, layout, sidebar)
 │── script.js         # sidebar + crush-name input logic
 │── logo.png          # website logo / favicon
-│── /pages            # extra pages (blogs, projects, skills, fun projects)
 
 ````
 
@@ -50,7 +49,7 @@ Feel free to modify and play around with it.
 
 ---
 
-💡 *Made with fun, sarcasm, and imagination.*
+💡 *Made with for fun*
 
 ```
 
