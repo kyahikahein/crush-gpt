@@ -3,55 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crush-GPT - Never Replies</title>
+    <title>Crush Chat</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <button class="new-chat-btn">
-                <span>+</span>
-                New Chat
-            </button>
+    <div class="app">
+        <!-- Collapsible Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/>
+                    </svg>
+                </button>
+                <button class="new-chat-btn" id="newChatBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                    </svg>
+                    <span>New Chat</span>
+                </button>
+            </div>
             
-            <div class="chat-history">
-                <div class="chat-item active">💔 Current Chat</div>
-                <div class="chat-item" data-conversation="previous">💬 Previous Attempts</div>
-                <div class="chat-item" data-conversation="ignored">😢 More Ignored Messages</div>
-                <div class="chat-item" data-conversation="silence">🙄 Still No Response</div>
-                <div class="chat-item" data-conversation="hopeless">😭 Day 47 of Silence</div>
+            <div class="chat-history" id="chatHistory">
+                <div class="chat-item active">
+                    <div class="chat-preview">💔 Current Chat</div>
+                    <div class="chat-time">now</div>
+                </div>
+                <div class="chat-item" data-conversation="previous">
+                    <div class="chat-preview">💬 Previous Attempts</div>
+                    <div class="chat-time">2 days ago</div>
+                </div>
+                <div class="chat-item" data-conversation="ignored">
+                    <div class="chat-preview">😭 More Ignored Messages</div>
+                    <div class="chat-time">1 week ago</div>
+                </div>
+                <div class="chat-item" data-conversation="silence">
+                    <div class="chat-preview">🤡 Still No Response</div>
+                    <div class="chat-time">3 weeks ago</div>
+                </div>
+                <div class="chat-item" data-conversation="hopeless">
+                    <div class="chat-preview">💅🏻 Day 47 of Silence</div>
+                    <div class="chat-time">1 month ago</div>
+                </div>
             </div>
             
             <div class="sidebar-bottom">
                 <div class="user-info">
                     <img src="https://pbs.twimg.com/profile_images/1956422441569312770/OJe7wx2f_400x400.jpg" 
                          alt="Your Profile" 
-                         class="avatar user-avatar profile-img"
+                         class="avatar-img profile-img"
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="avatar user-avatar fallback-avatar" style="display: none;">U</div>
-                    <div>
+                    <div class="avatar fallback-avatar" style="display: none;">U</div>
+                    <div class="user-details">
                         <div class="username">You</div>
-                        <div class="user-status">Forever hopeful</div>
+                        <div class="user-status">Forever hopeful 🥰</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="main-content">
+        <!-- Main Chat Area -->
+        <div class="main-chat">
+            <!-- Header -->
             <div class="chat-header">
-                <div class="header-title">
-                    <div class="avatar assistant-avatar">C</div>
-                    <span>Crush-GPT</span>
-                </div>
-                <div class="status-indicator">
-                    <div class="status-dot"></div>
-                    <span>Online (but ignoring you)</span>
+                <button class="sidebar-toggle mobile-only" id="mobileSidebarToggle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/>
+                    </svg>
+                </button>
+                <div class="chat-title">
+                    <div class="avatar">C</div>
+                    <div class="title-info">
+                        <div class="name">Crush-GPT</div>
+                        <div class="status" id="statusText">online (but ignoring you) 😀</div>
+                    </div>
                 </div>
             </div>
 
+            <!-- Messages Container -->
             <div class="messages-container" id="messagesContainer">
                 <div class="welcome-screen">
                     <div class="welcome-header">
@@ -67,11 +99,11 @@
                                 <div class="example-text">"Hey! How's your day going?"</div>
                             </div>
                             <div class="example-item">
-                                <div class="example-icon">😊</div>
+                                <div class="example-icon">😀</div>
                                 <div class="example-text">"Did you see that funny meme I sent?"</div>
                             </div>
                             <div class="example-item">
-                                <div class="example-icon">❤️</div>
+                                <div class="example-icon">🥰</div>
                                 <div class="example-text">"Thinking of you today"</div>
                             </div>
                         </div>
@@ -83,11 +115,11 @@
                                 <div class="example-text">Reads your messages instantly</div>
                             </div>
                             <div class="example-item">
-                                <div class="example-icon">🚫</div>
+                                <div class="example-icon">👍🏻</div>
                                 <div class="example-text">Never replies (just like your crush)</div>
                             </div>
                             <div class="example-item">
-                                <div class="example-icon">😅</div>
+                                <div class="example-icon">😃</div>
                                 <div class="example-text">Provides authentic ghosting experience</div>
                             </div>
                         </div>
@@ -111,57 +143,59 @@
                 </div>
             </div>
 
+            <!-- Typing Indicator -->
             <div class="typing-indicator" id="typingIndicator">
-                <div class="avatar assistant-avatar">C</div>
-                <div>
-                    <span class="typing-text">Crush-GPT is typing</span>
+                <div class="typing-avatar">C</div>
+                <div class="typing-text">
+                    <span>typing</span>
                     <div class="typing-dots">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
                 </div>
             </div>
 
-            <div class="input-container">
-                <div class="input-wrapper">
+            <!-- Input Area -->
+            <div class="input-area">
+                <div class="input-container">
                     <textarea 
-                        class="message-input" 
                         id="messageInput" 
-                        placeholder="Message Crush-GPT... (who will never reply)"
+                        placeholder="Message Crush..."
                         rows="1"
                     ></textarea>
-                    <button class="send-button" id="sendButton" disabled>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <button class="send-btn" id="sendBtn" disabled>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/>
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="stats-panel">
-        <div class="stats-title">📊 Reality Check</div>
-        <div class="stat-row">
-            <span>Messages Sent:</span>
-            <span class="stat-value" id="messagesSent">0</span>
-        </div>
-        <div class="stat-row">
-            <span>Messages Read:</span>
-            <span class="stat-value" id="messagesRead">0</span>
-        </div>
-        <div class="stat-row">
-            <span>Replies Received:</span>
-            <span class="stat-value replies-count" id="repliesReceived">0</span>
-        </div>
-        <div class="stat-row">
-            <span>Hope Level:</span>
-            <span class="stat-value replies-count">Declining</span>
-        </div>
-        <div class="stat-row">
-            <span>Self-Respect:</span>
-            <span class="stat-value replies-count">Critical</span>
+        <!-- Stats Panel - Moved to top left -->
+        <div class="stats-panel" id="statsPanel">
+            <div class="stats-header">📊 Reality Check</div>
+            <div class="stat-item">
+                <span>Messages sent</span>
+                <span id="messagesSent">0</span>
+            </div>
+            <div class="stat-item">
+                <span>Messages read</span>
+                <span id="messagesRead">0</span>
+            </div>
+            <div class="stat-item">
+                <span>Replies received</span>
+                <span id="repliesReceived" class="highlight">0</span>
+            </div>
+            <div class="stat-item">
+                <span>Hope level</span>
+                <span id="hopeLevel">High 🥰</span>
+            </div>
+            <div class="stat-item">
+                <span>Self-respect</span>
+                <span id="selfRespect">Critical 💅🏻</span>
+            </div>
         </div>
     </div>
 
