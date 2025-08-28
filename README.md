@@ -11,20 +11,16 @@ Think of it as the most realistic simulation of unrequited love, wrapped in the 
 
 ## ✨ Features
 - 🔤 Enter your crush's name when you first open the site  
-- 💬 AI-powered conversation that feels casual and playful  
 - 🎨 Collapsible sidebar with navigation (blogs, projects, skills, fun projects)  
-- 🌗 Smooth dark/light theme toggle  
 - 🖼️ Custom logo support (favicon + sidebar logo)  
 
 ## 🛠️ Tech Stack
 - **HTML5** – structure  
 - **CSS3** – styling (themes, layout, sidebar)  
 - **JavaScript** – sidebar toggle & crush-name input  
-- **AI backend** (optional: OpenAI API or local LLM)  
 
 ## 📂 Project Structure
 ```
-
 root/
 │── index.html        # main entry point
 │── style.css         # styles (themes, layout, sidebar)
@@ -45,8 +41,7 @@ root/
 3. Enter your crush’s name, and start chatting ❤️.
 
 ## 📸 Preview
-
-(Add a screenshot here if you want — `preview.png`)
+[Preview](preview.png)
 
 ## 📜 License
 
