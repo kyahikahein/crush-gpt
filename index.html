@@ -3,15 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crush Chat</title>
+    <link rel="icon" type="image/png" href="logo.png">
+	<title>Crush-GPT</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Name Collection Modal -->
+    <div class="name-modal" id="nameModal">
+        <div class="name-modal-content">
+            <div class="modal-title">💕 Let's Set Up Your Crush Experience</div>
+            <div class="modal-subtitle">
+                What's your crush's name? This will make the chat feel more personal and realistic.
+                <br><small>Don't worry, this stays completely private on your device.</small>
+            </div>
+            <input type="text" class="name-input" id="crushNameInput" placeholder="Enter their name..." maxlength="20">
+            <div class="modal-buttons">
+                <button class="modal-btn secondary" id="skipNameBtn">Skip (use random)</button>
+                <button class="modal-btn primary" id="confirmNameBtn">Let's Start!</button>
+            </div>
+        </div>
+    </div>
+
     <div class="app">
-        <!-- Collapsible Sidebar -->
+        <!-- Enhanced Sidebar -->
         <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <button class="sidebar-toggle" id="sidebarToggle">
@@ -29,24 +46,25 @@
             
             <div class="chat-history" id="chatHistory">
                 <div class="chat-item active">
-                    <div class="chat-preview">💔 Current Chat</div>
-                    <div class="chat-time">now</div>
+                    <div class="chat-item-icon">💕</div>
+                    <div class="chat-item-content">
+                        <div class="chat-preview">Current Chat</div>
+                        <div class="chat-time">now</div>
+                    </div>
                 </div>
                 <div class="chat-item" data-conversation="previous">
-                    <div class="chat-preview">💬 Previous Attempts</div>
-                    <div class="chat-time">2 days ago</div>
+                    <div class="chat-item-icon">💬</div>
+                    <div class="chat-item-content">
+                        <div class="chat-preview">Previous Attempts</div>
+                        <div class="chat-time">2 days ago</div>
+                    </div>
                 </div>
                 <div class="chat-item" data-conversation="ignored">
-                    <div class="chat-preview">😭 More Ignored Messages</div>
-                    <div class="chat-time">1 week ago</div>
-                </div>
-                <div class="chat-item" data-conversation="silence">
-                    <div class="chat-preview">🤡 Still No Response</div>
-                    <div class="chat-time">3 weeks ago</div>
-                </div>
-                <div class="chat-item" data-conversation="hopeless">
-                    <div class="chat-preview">💅🏻 Day 47 of Silence</div>
-                    <div class="chat-time">1 month ago</div>
+                    <div class="chat-item-icon">😭</div>
+                    <div class="chat-item-content">
+                        <div class="chat-preview">More Ignored Messages</div>
+                        <div class="chat-time">1 week ago</div>
+                    </div>
                 </div>
             </div>
             
@@ -54,9 +72,9 @@
                 <div class="user-info">
                     <img src="https://pbs.twimg.com/profile_images/1956422441569312770/OJe7wx2f_400x400.jpg" 
                          alt="Your Profile" 
-                         class="avatar-img profile-img"
+                         class="avatar-img"
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="avatar fallback-avatar" style="display: none;">U</div>
+                    <div class="fallback-avatar" style="display: none;">U</div>
                     <div class="user-details">
                         <div class="username">You</div>
                         <div class="user-status">Forever hopeful 🥰</div>
@@ -69,16 +87,16 @@
         <div class="main-chat">
             <!-- Header -->
             <div class="chat-header">
-                <button class="sidebar-toggle mobile-only" id="mobileSidebarToggle">
+                <button class="sidebar-toggle mobile-sidebar-toggle" id="mobileSidebarToggle">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/>
                     </svg>
                 </button>
                 <div class="chat-title">
-                    <div class="avatar">C</div>
+                    <div class="crush-avatar" id="crushAvatar">S</div>
                     <div class="title-info">
-                        <div class="name">Crush-GPT</div>
-                        <div class="status" id="statusText">online (but ignoring you) 😀</div>
+                        <div class="name" id="crushDisplayName">Sana</div>
+                        <div class="status" id="statusText">online (but ignoring you) 😔</div>
                     </div>
                 </div>
             </div>
@@ -90,64 +108,14 @@
                         <div class="welcome-title">Crush-GPT</div>
                         <div class="welcome-subtitle">Experience the authentic frustration of modern digital relationships</div>
                     </div>
-                    
-                    <div class="welcome-examples">
-                        <div class="example-section">
-                            <div class="example-title">Examples</div>
-                            <div class="example-item">
-                                <div class="example-icon">💬</div>
-                                <div class="example-text">"Hey! How's your day going?"</div>
-                            </div>
-                            <div class="example-item">
-                                <div class="example-icon">😀</div>
-                                <div class="example-text">"Did you see that funny meme I sent?"</div>
-                            </div>
-                            <div class="example-item">
-                                <div class="example-icon">🥰</div>
-                                <div class="example-text">"Thinking of you today"</div>
-                            </div>
-                        </div>
-                        
-                        <div class="example-section">
-                            <div class="example-title">Capabilities</div>
-                            <div class="example-item">
-                                <div class="example-icon">📱</div>
-                                <div class="example-text">Reads your messages instantly</div>
-                            </div>
-                            <div class="example-item">
-                                <div class="example-icon">👍🏻</div>
-                                <div class="example-text">Never replies (just like your crush)</div>
-                            </div>
-                            <div class="example-item">
-                                <div class="example-icon">😃</div>
-                                <div class="example-text">Provides authentic ghosting experience</div>
-                            </div>
-                        </div>
-                        
-                        <div class="example-section">
-                            <div class="example-title">Limitations</div>
-                            <div class="example-item">
-                                <div class="example-icon">💔</div>
-                                <div class="example-text">Cannot provide emotional support</div>
-                            </div>
-                            <div class="example-item">
-                                <div class="example-icon">🤡</div>
-                                <div class="example-text">Will make you question your self-worth</div>
-                            </div>
-                            <div class="example-item">
-                                <div class="example-icon">😭</div>
-                                <div class="example-text">May cause excessive hope and disappointment</div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <!-- Typing Indicator -->
             <div class="typing-indicator" id="typingIndicator">
-                <div class="typing-avatar">C</div>
+                <div class="typing-avatar" id="typingAvatar">S</div>
                 <div class="typing-text">
-                    <span>typing</span>
+                    <span id="typingName">Sana</span> is typing
                     <div class="typing-dots">
                         <span></span>
                         <span></span>
@@ -161,7 +129,7 @@
                 <div class="input-container">
                     <textarea 
                         id="messageInput" 
-                        placeholder="Message Crush..."
+                        placeholder="Message Sana..."
                         rows="1"
                     ></textarea>
                     <button class="send-btn" id="sendBtn" disabled>
@@ -173,7 +141,7 @@
             </div>
         </div>
 
-        <!-- Stats Panel - Moved to top left -->
+        <!-- Stats Panel -->
         <div class="stats-panel" id="statsPanel">
             <div class="stats-header">📊 Reality Check</div>
             <div class="stat-item">
