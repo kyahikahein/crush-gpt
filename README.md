@@ -69,16 +69,3 @@ Feel free to modify, experiment, and enjoy the joke.
 ---
 
 💡 *Made with fun, sarcasm, and zero replies.*
-
-```
-
----
-
-✅ Notes:  
-- `preview.png` must be in the **root folder** (same level as `README.md`).  
-- `logo.png` also in root so it shows in the header.  
-
-If you want, I can **also add a small sidebar section in README with emojis**, matching the website sidebar style — so it looks like your site in miniature in the README.  
-
-Do you want me to do that?
-```
